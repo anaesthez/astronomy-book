@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AR Просмотрщик 3D</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <link rel="stylesheet" href="viewer-style.css">
+</head>
+<body>
+    <!-- Начальное меню -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-card">
+            <div class="model-icon" id="modelIcon">🌍</div>
+            <h1 class="model-name" id="modelName">Модель</h1>
+            <p class="model-description" id="modelDescription">Описание модели...</p>
+            
+            <div class="audio-controls" id="audioControls">
+                <button class="audio-btn" id="audioBtn">
+                    <span class="audio-icon">▶️</span>
+                </button>
+                <span class="audio-label">Аудио-рассказ</span>
+            </div>
+            
+            <button class="start-btn" id="startBtn">
+                🚀 Запустить просмотр
+            </button>
+        </div>
+    </div>
+    
+    <!-- Индикатор загрузки -->
+    <div class="loading hidden" id="loading">
+        <div class="loading-spinner"></div>
+        <span>Загрузка модели...</span>
+    </div>
+    
+    <!-- Кнопка AR -->
+    <button class="ar-button" id="arButton" disabled>
+        📱 Смотреть в AR
+    </button>
+    
+    <!-- 3D Просмотрщик -->
+    <model-viewer 
+        id="modelViewer"
+        camera-controls
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        shadow-intensity="1"
+        camera-orbit="30deg 70deg 2m"
+        ar-scale="auto"
+        exposure="1"
+        environment-image="neutral">
+    </model-viewer>
+
+    <script src="viewer-script.js"></script>
+</body>
+</html>
