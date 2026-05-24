@@ -36,7 +36,7 @@ export const qrActions = {
     'qr-3': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/models/Nastya_umnichka_sdelala_lunu.glb',
+        modelSrc: 'models/models/Nastya_umnichka_sdelala_lunu.glb',
         modelInfo: {
             name: 'Луна',
             icon: '🌙',
@@ -50,7 +50,7 @@ export const qrActions = {
     'qr-4': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/sun.glb',
+        modelSrc: 'models/sun.glb',
         modelInfo: {
             name: 'Солнце',
             icon: '☀️',
@@ -92,7 +92,7 @@ export const qrActions = {
     'qr-7': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: 'models/mars.glb',
+        modelSrc: 'astronomy-book/models/mars.glb',
         modelInfo: {
             name: 'Марс',
             icon: ' ',
