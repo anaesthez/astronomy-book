@@ -2,7 +2,6 @@
 // 🔹 КОНФИГУРАЦИЯ QR-КОДОВ - КОСМИЧЕСКИЙ ПРОЕКТ
 // 🔢 Нумерация: qr-1, qr-2, ..., qr-30
 // ============================================
-
 export const qrActions = {
     // 🪐 ПЛАНЕТЫ (qr-1 — qr-10)
     'qr-1': {
@@ -92,7 +91,7 @@ export const qrActions = {
     'qr-7': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: 'astronomy-book/models/mars.glb',
+        modelSrc: 'models/mars.glb',
         modelInfo: {
             name: 'Марс',
             icon: ' ',
@@ -198,7 +197,7 @@ export const qrActions = {
             icon: '☄️',
             description: 'Осколок астероида или кометы, упавший на поверхность Земли.',
             audio: '/audio/meteorite-narration.mp3',
-            scale: '0.15 0.15 0.15'
+            scale: '0.5 0.5 0.5'
         },
         attribution: null
     },
