@@ -64,10 +64,10 @@ export const qrActions = {
     'qr-5': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/mercury.glb',
+        modelSrc: 'models/mercury.glb',
         modelInfo: {
             name: 'Меркурий',
-            icon: '☿️',
+            icon: ' ',
             description: 'Самая маленькая и близкая к Солнцу планета. Год на Меркурии длится 88 земных дней.',
             audio: '/audio/mercury-narration.mp3',
             scale: '0.2 0.2 0.2'
@@ -78,10 +78,10 @@ export const qrActions = {
     'qr-6': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/venus.glb',
+        modelSrc: 'models/venus.glb',
         modelInfo: {
             name: 'Венера',
-            icon: '♀️',
+            icon: ' ',
             description: 'Вторая планета от Солнца. Самая горячая планета с температурой до 475°C.',
             audio: '/audio/venus-narration.mp3',
             scale: '0.22 0.22 0.22'
@@ -92,10 +92,10 @@ export const qrActions = {
     'qr-7': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/mars.glb',
+        modelSrc: 'models/mars.glb',
         modelInfo: {
             name: 'Марс',
-            icon: '♂️',
+            icon: ' ',
             description: 'Красная планета. Цель будущих космических миссий и возможного колонизирования.',
             audio: '/audio/mars-narration.mp3',
             scale: '0.23 0.23 0.23'
@@ -106,10 +106,10 @@ export const qrActions = {
     'qr-8': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/jupiter.glb',
+        modelSrc: 'models/jupiter.glb',
         modelInfo: {
             name: 'Юпитер',
-            icon: '♃',
+            icon: ' ',
             description: 'Самая большая планета Солнечной системы. Газовый гигант с Большим Красным Пятном.',
             audio: '/audio/jupiter-narration.mp3',
             scale: '0.35 0.35 0.35'
@@ -120,10 +120,10 @@ export const qrActions = {
     'qr-9': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/Nastya_umnichka_sdelala_saturn.glb',
+        modelSrc: 'models/Nastya_umnichka_sdelala_saturn.glb',
         modelInfo: {
             name: 'Сатурн',
-            icon: '♄',
+            icon: ' ',
             description: 'Шестая планета от Солнца, известная своей великолепной системой колец.',
             audio: '/audio/saturn-narration.mp3',
             scale: '0.32 0.32 0.32'
@@ -134,10 +134,10 @@ export const qrActions = {
     'qr-10': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/uranus.glb',
+        modelSrc: 'models/uranus.glb',
         modelInfo: {
             name: 'Уран',
-            icon: '♅',
+            icon: ' ',
             description: 'Седьмая планета, ледяной гигант, вращающийся «лёжа на боку».',
             audio: '/audio/uranus-narration.mp3',
             scale: '0.28 0.28 0.28'
@@ -150,10 +150,10 @@ export const qrActions = {
     'qr-11': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/neptune.glb',
+        modelSrc: 'models/neptune.glb',
         modelInfo: {
             name: 'Нептун',
-            icon: '♆',
+            icon: ' ',
             description: 'Восьмая и самая далёкая планета. Ледяной гигант с сильнейшими ветрами.',
             audio: '/audio/neptune-narration.mp3',
             scale: '0.27 0.27 0.27'
@@ -164,7 +164,7 @@ export const qrActions = {
     'qr-12': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/comet.glb',
+        modelSrc: 'models/comet.glb',
         modelInfo: {
             name: 'Комета',
             icon: '☄️',
@@ -178,7 +178,7 @@ export const qrActions = {
     'qr-13': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/asteroid.glb',
+        modelSrc: 'models/asteroid.glb',
         modelInfo: {
             name: 'Астероид',
             icon: '🌑',
@@ -192,7 +192,7 @@ export const qrActions = {
     'qr-14': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/[qr-5]_meteorite_lar1232632.glb',
+        modelSrc: 'models/meteorite.glb',
         modelInfo: {
             name: 'Метеорит',
             icon: '☄️',
@@ -234,7 +234,7 @@ export const qrActions = {
     'qr-17': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/suit.glb',
+        modelSrc: 'models/suit.glb',
         modelInfo: {
             name: 'Космический скафандр',
             icon: '👨‍🚀',
@@ -264,7 +264,7 @@ export const qrActions = {
     'qr-19': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/iss.glb',
+        modelSrc: 'models/iss.glb',
         modelInfo: {
             name: 'Международная космическая станция',
             icon: '🛰️',
