@@ -26,22 +26,18 @@
                 <span class="audio-label">Аудио-рассказ</span>
             </div>
             
-            <button class="start-btn" id="startBtn">
-                🚀 Запустить просмотр
-            </button>
+            <button class="start-btn" id="startBtn">🚀 Запустить просмотр</button>
         </div>
     </div>
     
     <!-- Индикатор загрузки -->
     <div class="loading hidden" id="loading">
         <div class="loading-spinner"></div>
-        <span>Загрузка модели...</span>
+        <span>Загрузка...</span>
     </div>
     
     <!-- Кнопка AR -->
-    <button class="ar-button" id="arButton" disabled>
-        📱 Смотреть в AR
-    </button>
+    <button class="ar-button" id="arButton" disabled>📱 Смотреть в AR</button>
     
     <!-- 3D Просмотрщик -->
     <model-viewer 
@@ -56,6 +52,6 @@
         environment-image="neutral">
     </model-viewer>
 
-    <script src="viewer-script.js"></script>
+    <script type="module" src="dispatcher.js"></script>
 </body>
 </html>
