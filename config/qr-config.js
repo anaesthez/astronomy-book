@@ -4,7 +4,6 @@
 // ============================================
 
 export const qrActions = {
-    
     // 🪐 ПЛАНЕТЫ (qr-1 — qr-10)
     'qr-1': {
         type: 'model',
@@ -15,7 +14,7 @@ export const qrActions = {
             icon: '🌍',
             description: 'Наша голубая планета — единственное известное место во Вселенной, где существует жизнь.',
             audio: '/audio/earth-narration.mp3',
-            scale: '0.2 0.2 0.2'
+            scale: '0.1 0.1 0.1'
         },
         attribution: 'Источник: NASA Science'
     },
