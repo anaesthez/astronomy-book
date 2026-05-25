@@ -247,7 +247,7 @@ export const qrActions = {
     'qr-18': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: '/models/rocket.glb',
+        modelSrc: 'models/rocket.glb',
         modelInfo: {
             name: 'Космическая ракета',
             icon: '🚀',
