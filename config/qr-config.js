@@ -144,8 +144,6 @@ export const qrActions = {
         attribution: null
     },
     
-    // 🌌 ДАЛЬНИЕ ОБЪЕКТЫ И КОСМИЧЕСКИЕ ТЕЛА (qr-11 — qr-17)
-    
     'qr-11': {
         type: 'model',
         handler: 'actions/model-action.js',
