@@ -50,7 +50,7 @@ function executeAction(action) {
             break;
 
         case 'quiz':
-            window.location.href = action.url || '/quiz.html';
+            window.location.href = action.url || '/quiz1.html';
             break;
             
         default:

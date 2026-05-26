@@ -277,14 +277,14 @@ export const qrActions = {
     'qr-20': {
         type: 'redirect',
         handler: 'actions/redirect-action.js',
-        url: 'https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%80%D1%81',
+        url: 'https://rutube.ru/video/13e3c4f90d0597635d31689e08ffa2c9/',
         delay: 500
     },
     
     'qr-21': {
         type: 'redirect',
         handler: 'actions/redirect-action.js',
-        url: 'https://www.roscosmos.ru/202/',
+        url: 'https://rutube.ru/video/db50f64ffef20aa39f741e16766708f9/',
         delay: 500
     },
     
