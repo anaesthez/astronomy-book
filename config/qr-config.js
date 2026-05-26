@@ -292,7 +292,7 @@ export const qrActions = {
     
     'qr-22': {
         type: 'quiz',
-        url: 'astronomy-book/first_quiz.html',  // путь к файлу викторины
+        url: '/quiz1.html',  // путь к файлу викторины
         quizData: {
             title: 'Викторина: Глава 1 — Введение',
             icon: '📝',
