@@ -99,50 +99,6 @@ model-viewer {
     font-weight: 300;
 }
 
-/* Аудио контролы */
-.audio-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.audio-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.audio-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-}
-
-.audio-btn.pause {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-}
-
-.audio-label {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
 /* Кнопка старта */
 .start-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);

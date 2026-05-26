@@ -48,6 +48,10 @@ function executeAction(action) {
             const separator = action.pageUrl.includes('?') ? '&' : '?';
             window.location.href = `${action.pageUrl}${separator}${params}`;
             break;
+
+        case 'quiz':
+            window.location.href = action.url || '/quiz.html';
+            break;
             
         default:
             showFallback('⚠️ Неизвестный тип действия');
