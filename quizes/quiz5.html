@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Викторина - Космос и человек</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0a1a 0%, #2e1a2e 50%, #1a0a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Звёздный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ff88cc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 60px 90px, #ff99dd, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 150px 50px, #ff88cc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 250px 180px, #ff99dd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 350px 250px, #ff88cc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 450px 150px, #ff99dd, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 550px 350px, #ff88cc, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 650px 450px, #ff99dd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 750px 280px, #ff88cc, rgba(0,0,0,0));
+            background-repeat: no-repeat;
+            background-size: 800px 500px;
+            opacity: 0.5;
+            pointer-events: none;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Карточка викторины */
+        .quiz-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 100, 180, 0.3);
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(255, 100, 180, 0.2);
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Заголовок */
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .quiz-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 100, 180, 0.5));
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .quiz-title {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff88cc, #cc66aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-description {
+            color: rgba(255, 180, 210, 0.9);
+            font-size: 16px;
+        }
+        
+        /* Прогресс */
+        .progress-bar {
+            background: rgba(255, 100, 180, 0.2);
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #ff88cc, #cc66aa);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .question-counter {
+            text-align: right;
+            color: rgba(255, 180, 210, 0.6);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        /* Вопрос */
+        .question-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffe6f0;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        /* Варианты ответов */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            background: rgba(255, 100, 180, 0.1);
+            border: 2px solid rgba(255, 100, 180, 0.3);
+            border-radius: 15px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .option:hover {
+            background: rgba(255, 100, 180, 0.2);
+            transform: translateX(5px);
+            border-color: rgba(255, 136, 204, 0.7);
+        }
+        
+        .option.selected {
+            background: linear-gradient(135deg, rgba(255, 136, 204, 0.3), rgba(204, 102, 170, 0.3));
+            border-color: #ff88cc;
+            box-shadow: 0 0 15px rgba(255, 136, 204, 0.3);
+        }
+        
+        .option.correct {
+            background: rgba(46, 204, 113, 0.3);
+            border-color: #2ecc71;
+            animation: pulse 0.5s ease;
+        }
+        
+        .option.wrong {
+            background: rgba(231, 76, 60, 0.3);
+            border-color: #e74c3c;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .option-letter {
+            font-weight: 800;
+            font-size: 20px;
+            color: #ff88cc;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 100, 180, 0.2);
+            border-radius: 10px;
+        }
+        
+        .option-text {
+            flex: 1;
+            color: #ffe6f0;
+            font-size: 16px;
+        }
+        
+        .option-icon {
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: #ff88cc;
+        }
+        
+        .option.selected .option-icon {
+            opacity: 1;
+        }
+        
+        /* Кнопки навигации */
+        .navigation {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 100, 180, 0.2);
+            color: #ffccdd;
+            border: 1px solid rgba(255, 100, 180, 0.3);
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 100, 180, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #ff88cc, #cc66aa);
+            color: #1a0a1a;
+            flex: 1;
+            font-weight: 700;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 136, 204, 0.5);
+        }
+        
+        /* Результаты */
+        .results {
+            text-align: center;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .score-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffccdd;
+            position: absolute;
+        }
+        
+        .score-text {
+            font-size: 18px;
+            color: rgba(255, 180, 210, 0.8);
+            margin-top: 10px;
+        }
+        
+        .result-message {
+            font-size: 20px;
+            color: #ffccdd;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 100, 180, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 100, 180, 0.3);
+        }
+        
+        .restart-btn {
+            background: linear-gradient(135deg, #ff88cc, #cc66aa);
+            color: #1a0a1a;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 136, 204, 0.5);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .quiz-card {
+                padding: 25px;
+            }
+            
+            .quiz-title {
+                font-size: 28px;
+            }
+            
+            .question-text {
+                font-size: 20px;
+            }
+            
+            .option {
+                padding: 12px 15px;
+            }
+            
+            .option-letter {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Анимация загрузки */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px 40px;
+            border-radius: 50px;
+            color: #ffccdd;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .loading.active {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 100, 180, 0.3);
+            border-top: 2px solid #ff88cc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-card" id="quizCard">
+            <!-- Контент будет динамически загружаться -->
+        </div>
+    </div>
+    
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <span>Загрузка...</span>
+    </div>
+    
+    <script>
+        // Данные викторины по главе "Космос и человек"
+        const quizData = {
+            title: '👨‍🚀 Космос и человек',
+            icon: '🚀',
+            description: 'Проверьте свои знания об освоении космоса, космонавтах и МКС!',
+            questions: [
+                {
+                    question: 'Кто совершил первый в мире орбитальный космический полёт?',
+                    options: ['Герман Титов', 'Юрий Гагарин', 'Алексей Леонов', 'Нил Армстронг'],
+                    correct: 1
+                },
+                {
+                    question: '12 апреля 1961 года — это дата полёта Гагарина. Какой праздник отмечается в этот день?',
+                    options: ['День космонавтики', 'День авиации', 'День ракетных войск', 'День науки'],
+                    correct: 0
+                },
+                {
+                    question: 'Какой двигатель используется в современных ракетах?',
+                    options: ['Поршневой', 'Реактивный', 'Жидкостный ракетный двигатель', 'Электрический'],
+                    correct: 2
+                },
+                {
+                    question: 'Кто первым вышел в открытый космос?',
+                    options: ['Юрий Гагарин', 'Нил Армстронг', 'Алексей Леонов', 'Валентина Терешкова'],
+                    correct: 2
+                },
+                {
+                    question: 'Как называется главная орбитальная станция, эксплуатируемая с 1998 года?',
+                    options: ['Мир', 'Скайлэб', 'МКС', 'Салют'],
+                    correct: 2
+                },
+                {
+                    question: 'На каком принципе основано движение ракеты?',
+                    options: ['Аэродинамика', 'Реактивное движение', 'Магнитная левитация', 'Парусность'],
+                    correct: 1
+                },
+                {
+                    question: 'Кто был конструктором ракеты "Восток"?',
+                    options: ['Циолковский', 'Королёв', 'Фон Браун', 'Гагарин'],
+                    correct: 1
+                },
+                {
+                    question: 'Какая страна первой запустила искусственный спутник Земли?',
+                    options: ['США', 'СССР', 'Китай', 'Германия'],
+                    correct: 1
+                },
+                {
+                    question: 'Сколько минут длился полёт Гагарина?',
+                    options: ['68 минут', '108 минут', '148 минут', '88 минут'],
+                    correct: 1
+                },
+                {
+                    question: 'Что является основным источником энергии для МКС?',
+                    options: ['Атомный реактор', 'Солнечные батареи', 'Химические генераторы', 'Ветряки'],
+                    correct: 1
+                }
+            ]
+        };
+        
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let quizStarted = true;
+        let quizCompleted = false;
+        
+        // Инициализация
+        function init() {
+            userAnswers = new Array(quizData.questions.length).fill(null);
+            render();
+        }
+        
+        // Рендер текущего состояния
+        function render() {
+            const container = document.getElementById('quizCard');
+            
+            if (quizCompleted) {
+                renderResults(container);
+            } else {
+                renderQuestion(container);
+            }
+        }
+        
+        // Рендер вопроса
+        function renderQuestion(container) {
+            const question = quizData.questions[currentQuestion];
+            const hasAnswered = userAnswers[currentQuestion] !== null;
+            
+            container.innerHTML = `
+                <div class="quiz-header">
+                    <div class="quiz-icon">${quizData.icon}</div>
+                    <h1 class="quiz-title">${quizData.title}</h1>
+                    <p class="quiz-description">${quizData.description}</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${((currentQuestion + 1) / quizData.questions.length) * 100}%"></div>
+                </div>
+                
+                <div class="question-counter">
+                    Вопрос ${currentQuestion + 1} из ${quizData.questions.length}
+                </div>
+                
+                <div class="question-text">
+                    ${question.question}
+                </div>
+                
+                <div class="options" id="optionsContainer">
+                    ${question.options.map((opt, idx) => `
+                        <div class="option ${userAnswers[currentQuestion] === idx ? 'selected' : ''}" data-index="${idx}">
+                            <div class="option-letter">${String.fromCharCode(65 + idx)}</div>
+                            <div class="option-text">${opt}</div>
+                            <div class="option-icon">✓</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="navigation">
+                    <button class="nav-btn" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>
+                        ◀ Назад
+                    </button>
+                    ${currentQuestion === quizData.questions.length - 1 ? 
+                        `<button class="submit-btn" id="submitBtn" ${!hasAnswered ? 'disabled' : ''}>
+                            📊 Завершить
+                        </button>` :
+                        `<button class="nav-btn" id="nextBtn" ${!hasAnswered ? 'disabled' : ''}>
+                            Далее ▶
+                        </button>`
+                    }
+                </div>
+            `;
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.addEventListener('click', () => selectAnswer(parseInt(opt.dataset.index)));
+            });
+            
+            const prevBtn = document.getElementById('prevBtn');
+            if (prevBtn) prevBtn.addEventListener('click', prevQuestion);
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) nextBtn.addEventListener('click', nextQuestion);
+            
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) submitBtn.addEventListener('click', completeQuiz);
+        }
+        
+        // Выбор ответа
+        function selectAnswer(answerIndex) {
+            if (quizCompleted) return;
+            
+            userAnswers[currentQuestion] = answerIndex;
+            
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            options[answerIndex].classList.add('selected');
+            
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            if (nextBtn) nextBtn.disabled = false;
+            if (submitBtn) submitBtn.disabled = false;
+        }
+        
+        // Предыдущий вопрос
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                render();
+            }
+        }
+        
+        // Следующий вопрос
+        function nextQuestion() {
+            if (currentQuestion < quizData.questions.length - 1) {
+                currentQuestion++;
+                render();
+            }
+        }
+        
+        // Завершить викторину
+        function completeQuiz() {
+            if (userAnswers.includes(null)) {
+                alert('Пожалуйста, ответьте на все вопросы!');
+                return;
+            }
+            
+            quizCompleted = true;
+            render();
+            
+            const results = calculateResults();
+            localStorage.setItem('quizResults', JSON.stringify({
+                score: results.score,
+                total: results.total,
+                percentage: results.percentage,
+                timestamp: new Date().toISOString()
+            }));
+        }
+        
+        // Рассчёт результатов
+        function calculateResults() {
+            let correct = 0;
+            quizData.questions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) {
+                    correct++;
+                }
+            });
+            
+            return {
+                score: correct,
+                total: quizData.questions.length,
+                percentage: (correct / quizData.questions.length) * 100
+            };
+        }
+        
+        // Рендер результатов
+        function renderResults(container) {
+            const results = calculateResults();
+            const percentage = results.percentage;
+            
+            let message = '';
+            let emoji = '';
+            
+            if (percentage === 100) {
+                message = 'Превосходно! Вы настоящий эксперт по космонавтике! 🎉';
+                emoji = '🏆';
+            } else if (percentage >= 70) {
+                message = 'Отлично! Вы хорошо знаете историю освоения космоса! 🌟';
+                emoji = '⭐';
+            } else if (percentage >= 50) {
+                message = 'Неплохо! Но можно и лучше перечитать главу! 📚';
+                emoji = '👍';
+            } else {
+                message = 'Не расстраивайтесь! Прочитайте главу ещё раз и попробуйте снова! 🚀';
+                emoji = '💪';
+            }
+            
+            container.innerHTML = `
+                <div class="quiz-header">
+                    <div class="quiz-icon">${emoji}</div>
+                    <h1 class="quiz-title">Результаты викторины</h1>
+                </div>
+                
+                <div class="results">
+                    <div class="score-circle">
+                        <svg width="200" height="200" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,100,180,0.2)" stroke-width="15"/>
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gradient)" stroke-width="15" 
+                                    stroke-dasharray="${percentage * 5.654}" stroke-dashoffset="565.4"
+                                    stroke-linecap="round" transform="rotate(-90 100 100)"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ff88cc"/>
+                                    <stop offset="100%" style="stop-color:#cc66aa"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div class="score-number">${results.score}/${results.total}</div>
+                    </div>
+                    <div class="score-text">${percentage.toFixed(1)}% правильных ответов</div>
+                    
+                    <div class="result-message">
+                        ${message}
+                    </div>
+                    
+                    <button class="restart-btn" id="restartBtn">
+                        🔄 Пройти викторину снова
+                    </button>
+                    
+                    <button class="restart-btn" id="backBtn" style="margin-top: 10px; background: rgba(255,100,180,0.2); color: #ffccdd;">
+                        ◀ Вернуться назад
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('restartBtn').addEventListener('click', restartQuiz);
+            document.getElementById('backBtn').addEventListener('click', () => {
+                window.history.back();
+            });
+        }
+        
+        // Перезапуск викторины
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = new Array(quizData.questions.length).fill(null);
+            quizCompleted = false;
+            render();
+        }
+        
+        // Запускаем
+        init();
+    </script>
+</body>
+</html>
