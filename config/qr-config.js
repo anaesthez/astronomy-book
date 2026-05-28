@@ -289,17 +289,26 @@ export const qrActions = {
     },
     
     // 📝 ВИКТОРИНЫ (qr-22 — qr-25)
-    
     'qr-22': {
         type: 'quiz',
-        url: '/quiz1.html',  // путь к файлу викторины
-        quizData: {
-            title: 'Викторина: Глава 1 — Введение',
-            icon: '📝',
-            description: 'Проверьте базовые знания о космосе!'
-        }
+        url: 'quizes/quiz1.html',  // путь к файлу викторины
     },
-
+    'qr-23': {
+        type: 'quiz',
+        url: 'quizes/quiz2.html',  // путь к файлу викторины
+    },
+    'qr-24': {
+        type: 'quiz',
+        url: 'quizes/quiz3.html',  // путь к файлу викторины
+    },
+    'qr-25': {
+        type: 'quiz',
+        url: 'quizes/quiz4.html',  // путь к файлу викторины
+    },
+    'qr-26': {
+        type: 'quiz',
+        url: 'quizes/quiz5.html',  // путь к файлу викторины
+    },
 };
 
 // Fallback для моделей, не указанных в конфиге

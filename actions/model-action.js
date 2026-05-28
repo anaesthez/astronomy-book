@@ -52,15 +52,6 @@ export function initModelAction(modelSrc, modelInfo) {
     if (startBtn) {
         startBtn.addEventListener('click', () => {
             if (introOverlay) introOverlay.classList.add('hidden');
-            
-            if (audioElement && !isAudioPlaying) {
-                audioElement.play().then(() => {
-                    isAudioPlaying = true;
-                    updateAudioButton();
-                }).catch(err => {
-                    console.log('Автовоспроизведение заблокировано:', err);
-                });
-            }
         });
     }
 
@@ -79,7 +70,7 @@ export function initModelAction(modelSrc, modelInfo) {
                 arButton.disabled = false;
                 arButton.textContent = '📱 Смотреть в AR';
             } else {
-                alert('📱 Ваше устройство не поддерживает AR\n\nПопробуйте открыть на смартфоне или планшете');
+                console.log('📱 Ваше устройство не поддерживает AR\n\nПопробуйте открыть на смартфоне или планшете');
             }
         });
     }
