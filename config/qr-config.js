@@ -13,7 +13,7 @@ export const qrActions = {
             icon: '🌍',
             description: 'Наша голубая планета — единственное известное место во Вселенной, где существует жизнь.',
             audio: '/audio/earth-narration.mp3',
-            scale: '0.1 0.1 0.1'
+            scale: '0.5 0.5 0.5'
         },
         attribution: 'Источник: NASA Science'
     },
