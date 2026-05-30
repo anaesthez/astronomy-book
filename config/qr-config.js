@@ -35,7 +35,7 @@ export const qrActions = {
     'qr-3': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: 'models/models/Nastya_umnichka_sdelala_lunu.glb',
+        modelSrc: 'models/Nastya_umnichka_sdelala_lunu.glb',
         modelInfo: {
             name: 'Луна',
             icon: '🌙',
