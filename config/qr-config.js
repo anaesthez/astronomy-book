@@ -49,7 +49,7 @@ export const qrActions = {
     'qr-4': {
         type: 'model',
         handler: 'actions/model-action.js',
-        modelSrc: 'models/sun.glb',
+        modelSrc: 'models/Nastya_umnichka_sdelala_solntse.glb',
         modelInfo: {
             name: 'Солнце',
             icon: '☀️',
