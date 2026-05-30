@@ -159,17 +159,10 @@ export const qrActions = {
     },
     
     'qr-12': {
-        type: 'model',
-        handler: 'actions/model-action.js',
-        modelSrc: 'models/comet.glb',
-        modelInfo: {
-            name: 'Комета',
-            icon: '☄️',
-            description: 'Ледяное космическое тело с ярким хвостом, образующимся при приближении к Солнцу.',
-            audio: '/audio/comet-narration.mp3',
-            scale: '0.2 0.2 0.2'
-        },
-        attribution: null
+        type: 'redirect',
+        handler: 'actions/redirect-action.js',
+        url: 'https://www.youtube.com/watch?v=8wpz1CupgC4',
+        delay: 500
     },
     
     'qr-13': {
@@ -284,7 +277,7 @@ export const qrActions = {
     'qr-21': {
         type: 'redirect',
         handler: 'actions/redirect-action.js',
-        url: 'https://rutube.ru/video/db50f64ffef20aa39f741e16766708f9/',
+        url: 'https://www.roscosmos.ru/30008/',
         delay: 500
     },
     
