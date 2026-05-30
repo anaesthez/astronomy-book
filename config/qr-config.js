@@ -37,6 +37,20 @@ export const qrActions = {
         handler: 'actions/model-action.js',
         modelSrc: 'models/Nastya_umnichka_sdelala_lunu.glb',
         modelInfo: {
+            name: 'Луна',
+            icon: '🌙',
+            description: 'Естественный спутник Земли, единственный внеземной объект, на котором побывал человек.',
+            audio: '/audio/moon-narration.mp3',
+            scale: '0.25 0.25 0.25'
+        },
+        attribution: null
+    },
+    
+    'qr-4': {
+        type: 'model',
+        handler: 'actions/model-action.js',
+        modelSrc: 'models/Nastya_umnichka_sdelala_solntse.glb',
+        modelInfo: {
             name: 'Солнце',
             icon: '☀️',
             description: 'Звезда в центре нашей Солнечной системы. Источник света и тепла для Земли.',
