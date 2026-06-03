@@ -12,7 +12,8 @@ export const qrActions = {
             name: 'Земля',
             icon: '🌍',
             description: 'Наша голубая планета — единственное известное место во Вселенной, где существует жизнь.',
-            audio: '/audio/earth-narration.mp3',
+            audioTitle: 'Тестовая озвучка QR-кода',
+            audio: 'audio/qr-earth.mp3',
             scale: '0.5 0.5 0.5'
         },
         attribution: 'Источник: NASA Science'

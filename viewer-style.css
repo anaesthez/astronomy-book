@@ -208,45 +208,152 @@ model-viewer {
     opacity: 0.7;
 }
 
-/* Адаптивность */
+/* Аудио плеер - утолщенная полоска прогресса */
+/* Аудио плеер - утолщенная полоска прогресса, перемещен вверх по центру */
+.audio-player {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(20, 20, 40, 0.9));
+    backdrop-filter: blur(20px);
+    border-radius: 60px;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 150;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.audio-player.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.audio-btn {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.audio-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.6), rgba(118, 75, 162, 0.6));
+}
+
+.audio-btn:active {
+    transform: scale(0.95);
+}
+
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 120px;
+}
+
+.audio-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.audio-progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.audio-progress-container:hover {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.audio-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    position: relative;
+}
+
+/* Добавляем небольшой блеск на полоску прогресса */
+.audio-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+    border-radius: 10px;
+}
+
+/* Мобильная адаптация */
 @media (max-width: 768px) {
-    .intro-card {
-        padding: 40px 30px;
+    .audio-player {
+        top: 10px;
+        padding: 6px 16px;
+        gap: 10px;
+        max-width: calc(100% - 20px);
     }
     
-    .model-name {
-        font-size: 26px;
+    .audio-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
     }
     
-    .model-description {
-        font-size: 14px;
+    .audio-info {
+        min-width: 100px;
     }
     
-    .ar-button {
-        padding: 16px 32px;
-        font-size: 16px;
-        bottom: 30px;
+    .audio-title {
+        font-size: 11px;
+    }
+    
+    .audio-progress-container {
+        height: 6px;
+    }
+    
+    .audio-progress-container:hover {
+        height: 8px;
     }
 }
 
+/* Для очень маленьких экранов */
 @media (max-width: 480px) {
-    .intro-card {
-        padding: 30px 20px;
+    .audio-player {
+        top: 8px;
+        padding: 5px 12px;
     }
     
-    .model-icon {
-        font-size: 60px;
+    .audio-progress-container {
+        height: 5px;
     }
     
-    .model-name {
-        font-size: 22px;
+    .audio-progress-container:hover {
+        height: 7px;
     }
-    
-    .ar-button {
-        padding: 14px 28px;
-        font-size: 14px;
-        bottom: 20px;
-        width: 80%;
-    }
-
 }

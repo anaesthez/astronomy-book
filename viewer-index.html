@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AR Просмотрщик 3D</title>
-    
+    <title>AR Просмотрщик 3D с аудио</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
-    
+    <!-- Подключаем model-viewer и стили -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="viewer-style.css">
 </head>
@@ -24,25 +23,40 @@
     <!-- Индикатор загрузки -->
     <div class="loading hidden" id="loading">
         <div class="loading-spinner"></div>
-        <span>Загрузка...</span>
-    </div>
+        <span>Загрузка 3D модели...</span>
+    </div>  
     
     <!-- Кнопка AR -->
     <button class="ar-button" id="arButton" disabled>📱 Смотреть в AR</button>
+    
+    <!-- Аудио плеер -->
+    <div class="audio-player hidden" id="audioPlayer">
+        <button class="audio-btn" id="playPauseBtn">▶️</button>
+        <div class="audio-info">
+            <div class="audio-title" id="audioTitle">Фоновый трек</div>
+            <div class="audio-progress-container" id="progressContainer">
+                <div class="audio-progress" id="audioProgress"></div>
+            </div>
+        </div>
+    </div>
     
     <!-- 3D Просмотрщик -->
     <model-viewer 
         id="modelViewer"
         camera-controls
+        auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look"
         shadow-intensity="1"
-        camera-orbit="30deg 70deg 2m"
+        camera-orbit="30deg 70deg 3m"
         ar-scale="auto"
         exposure="1"
-        environment-image="neutral">
+        environment-image="neutral"
+        rotation-per-second="30deg"
+        interaction-prompt="auto">
     </model-viewer>
 
+    <!-- Основная логика -->
     <script type="module" src="dispatcher.js"></script>
 </body>
 </html>
