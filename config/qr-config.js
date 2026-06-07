@@ -12,7 +12,7 @@ export const qrActions = {
             name: 'Земля',
             icon: '🌍',
             description: 'Наша голубая планета — единственное известное место во Вселенной, где существует жизнь.',
-            audioTitle: 'Тестовая озвучка QR-кода',
+            audioTitle: 'Земля',
             audio: 'audio/qr-earth.mp3',
             scale: '0.5 0.5 0.5'
         },
@@ -41,7 +41,8 @@ export const qrActions = {
             name: 'Луна',
             icon: '🌙',
             description: 'Естественный спутник Земли, единственный внеземной объект, на котором побывал человек.',
-            audio: '/audio/moon-narration.mp3',
+            audioTitle: 'Луна',
+            audio: 'audio/qr-moon.mp3',
             scale: '0.25 0.25 0.25'
         },
         attribution: null
@@ -125,7 +126,8 @@ export const qrActions = {
             name: 'Сатурн',
             icon: ' ',
             description: 'Шестая планета от Солнца, известная своей великолепной системой колец.',
-            audio: '/audio/saturn-narration.mp3',
+            audioTitle: 'Сатурн',
+            audio: 'audio/qr-saturn.mp3',
             scale: '0.32 0.32 0.32'
         },
         attribution: null
@@ -246,7 +248,8 @@ export const qrActions = {
             name: 'Космическая ракета',
             icon: '🚀',
             description: 'Средство выведения космических аппаратов на орбиту и за пределы Земли.',
-            audio: '/audio/rocket-narration.mp3',
+            audioTitle: 'Ракета',
+            audio: 'audio/qr-rocket.mp3',
             scale: '0.15 0.15 0.15'
         },
         attribution: null
