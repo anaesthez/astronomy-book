@@ -20,17 +20,10 @@ export const qrActions = {
     },
     
     'qr-2': {
-        type: 'model',
-        handler: 'actions/model-action.js',
-        modelSrc: '/models/solar-system.glb',
-        modelInfo: {
-            name: 'Солнечная система',
-            icon: '☀️',
-            description: 'Наша звёздная система с Солнцем в центре и восемью планетами на орбитах.',
-            audio: '/audio/solar-system-narration.mp3',
-            scale: '0.2 0.2 0.2'
-        },
-        attribution: 'Модель: Solar System Model Orrery by SketchFab'
+        type: 'redirect',
+        handler: 'actions/redirect-action.js',
+        url: 'https://vk.com/video-55155418_171400864/',
+        delay: 500
     },
     
     'qr-3': {
